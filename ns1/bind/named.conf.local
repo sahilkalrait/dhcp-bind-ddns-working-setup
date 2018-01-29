@@ -1,0 +1,31 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "sample.openstack.org" {
+    type slave;
+    file "/var/lib/bind/db.sample.openstack.org";
+    masters { 192.168.56.102; };
+};
+
+zone "56.168.192.in-addr.arpa" {
+    type slave;
+    file "/var/lib/bind/db.56.168.192";
+    masters { 192.168.56.102; };
+};
+
+zone "sample1.openstack.org" {
+    type slave;
+    file "/var/lib/bind/db.sample1.openstack.org";
+    masters { 192.168.56.103; };
+};
+
+zone "skdynamic.vbox" {
+    type slave;
+    file "/var/lib/bind/db.skdynamic.vbox";
+    masters { 192.168.56.103; };
+};

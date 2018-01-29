@@ -1,0 +1,23 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+
+zone "sample1.openstack.org" {
+    type master;
+    file "/var/lib/bind/db.sample1.openstack.org";
+    allow-transfer { 192.168.56.104; 192.168.56.101;  192.168.56.102;};
+};
+
+zone "skdynamic.vbox" in {
+        type master;
+        file "/var/lib/bind/db.skdynamic.vbox";
+        allow-update { key "designate-rndc-key"; };
+    allow-transfer { 192.168.56.104; 192.168.56.101;  192.168.56.102;};
+        notify yes;
+};
+
